@@ -111,7 +111,7 @@ const modules: Module[] = [
           alt: "ADO 2025 melanoma poster preview"
         },
         download: {
-          label: "Download ADO 2025 Melanoma Poster",
+          label: "Download ADO Melanoma Poster",
           href: pdfs.melanoma
         }
       }
