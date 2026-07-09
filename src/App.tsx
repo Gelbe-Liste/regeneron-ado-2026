@@ -95,7 +95,7 @@ const modules: Module[] = [
   {
     id: "publications",
     eyebrow: "Regeneron Publications",
-    title: "Post-ASCO 2026",
+    title: "ASCO 2026",
     subtitle:
       "Overview and collated Regeneron Publications from ASCO 2026",
     theme: "publications",
