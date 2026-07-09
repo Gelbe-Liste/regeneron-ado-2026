@@ -103,15 +103,15 @@ const modules: Module[] = [
     screens: [
       {
         label: "Download",
-        title: "Fianlimab + cemiplimab in advanced melanoma",
+        title: "Original materials",
         body:
-          "Subgroup analyses by blinded independent central review from the ADO Meeting 2025. Open the original poster PDF for detailed results, figures, tables and supplementary information.",
+          "Download the source PDF or return to the main menu to explore additional Regeneron materials",
         preview: {
           src: "/downloads/melanoma-bicr-ado-2025-preview.png",
           alt: "ADO 2025 melanoma poster preview"
         },
         download: {
-          label: "Open ADO 2025 Melanoma Poster",
+          label: "Download ADO 2025 Melanoma Poster",
           href: pdfs.melanoma
         }
       }
