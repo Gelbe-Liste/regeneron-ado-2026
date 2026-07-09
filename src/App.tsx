@@ -8,10 +8,10 @@ type Screen = {
   metrics?: [string, string][];
   timeline?: [string, string][];
   areas?: string[];
-  preview: {
-    src: "/downloads/melanoma-bicr-ado-2025-preview.png",
-    alt: "ADO 2025 melanoma poster preview"
-  },
+  preview?: {
+    src: string;
+    alt: string;
+  };
   download?: {
     label: string;
     href: string;
@@ -106,6 +106,10 @@ const modules: Module[] = [
         title: "Fianlimab + cemiplimab in advanced melanoma",
         body:
           "Subgroup analyses by blinded independent central review from the ADO Meeting 2025. Open the original poster PDF for detailed results, figures, tables and supplementary information.",
+        preview: {
+          src: "/downloads/melanoma-bicr-ado-2025-preview.png",
+          alt: "ADO 2025 melanoma poster preview"
+        },
         download: {
           label: "Open ADO 2025 Melanoma Poster",
           href: pdfs.melanoma
@@ -117,8 +121,7 @@ const modules: Module[] = [
     id: "publications",
     eyebrow: "Regeneron Publications",
     title: "ASCO 2026",
-    subtitle:
-      "Overview and collated Regeneron Publications from ASCO 2026",
+    subtitle: "Overview and collated Regeneron Publications from ASCO 2026",
     theme: "publications",
     screens: [
       {
