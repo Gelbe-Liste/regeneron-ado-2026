@@ -28,7 +28,7 @@ type Module = {
 };
 
 const pdfs = {
-  velocisuite: "/downloads/velocisuite-flyer-2025.pdf",
+  velocisuite: "/downloads/velocisuite-flyer-2026.pdf",
   rgc: "/downloads/rgc-factsheet-2025.pdf",
   publications: "/downloads/regeneron-publications-asco-2026.pdf"
 };
