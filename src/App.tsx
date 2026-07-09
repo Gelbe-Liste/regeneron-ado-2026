@@ -151,7 +151,7 @@ function HomeScreen({ openModule, onContact }: { openModule: (id: string) => voi
         <Header onContact={onContact} />
 
         <main className="home-screen">
-          <div className="badge">16th EPCM Hamburg</div>
+          <div className="badge">36th German Skin Cancer Congress Leipzig</div>
 
           <h1>WHO WE ARE</h1>
 
