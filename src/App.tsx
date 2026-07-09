@@ -8,10 +8,10 @@ type Screen = {
   metrics?: [string, string][];
   timeline?: [string, string][];
   areas?: string[];
-  preview?: {
-    src: string;
-    alt: string;
-  };
+  preview: {
+    src: "/downloads/melanoma-bicr-ado-2025-preview.png",
+    alt: "ADO 2025 melanoma poster preview"
+  },
   download?: {
     label: string;
     href: string;
@@ -23,13 +23,14 @@ type Module = {
   eyebrow: string;
   title: string;
   subtitle: string;
-  theme: "veloci" | "rgc" | "publications";
+  theme: "veloci" | "rgc" | "melanoma" | "publications";
   screens: Screen[];
 };
 
 const pdfs = {
   velocisuite: "/downloads/velocisuite-flyer-2026.pdf",
   rgc: "/downloads/rgc-factsheet-2025.pdf",
+  melanoma: "/downloads/McKean_R3767_1613-Melanoma-BICR_ADO-2025.pdf",
   publications: "/downloads/regeneron-publications-asco-2026.pdf"
 };
 
@@ -93,6 +94,26 @@ const modules: Module[] = [
     ]
   },
   {
+    id: "melanoma-bicr-ado-2025",
+    eyebrow: "ADO 2025 Poster",
+    title: "Melanoma BICR Analysis",
+    subtitle:
+      "Fianlimab + cemiplimab in patients with advanced melanoma: subgroup analyses by blinded independent central review",
+    theme: "melanoma",
+    screens: [
+      {
+        label: "Download",
+        title: "Fianlimab + cemiplimab in advanced melanoma",
+        body:
+          "Subgroup analyses by blinded independent central review from the ADO Meeting 2025. Open the original poster PDF for detailed results, figures, tables and supplementary information.",
+        download: {
+          label: "Open ADO 2025 Melanoma Poster",
+          href: pdfs.melanoma
+        }
+      }
+    ]
+  },
+  {
     id: "publications",
     eyebrow: "Regeneron Publications",
     title: "ASCO 2026",
@@ -144,7 +165,13 @@ function Header({ onContact }: { onContact: () => void }) {
   );
 }
 
-function HomeScreen({ openModule, onContact }: { openModule: (id: string) => void; onContact: () => void }) {
+function HomeScreen({
+  openModule,
+  onContact
+}: {
+  openModule: (id: string) => void;
+  onContact: () => void;
+}) {
   return (
     <div className="page-shell">
       <div className="phone">
@@ -156,7 +183,8 @@ function HomeScreen({ openModule, onContact }: { openModule: (id: string) => voi
           <h1>WHO WE ARE</h1>
 
           <p className="intro">
-          Regeneron is a global biotechnology company that invents life-transforming medicines for people with serious diseases
+            Regeneron is a global biotechnology company that invents
+            life-transforming medicines for people with serious diseases
           </p>
 
           <section className="module-list">
@@ -167,7 +195,13 @@ function HomeScreen({ openModule, onContact }: { openModule: (id: string) => voi
                 style={{
                   minHeight: "128px",
                   padding: "22px 22px",
-                  ...(mod.theme === "publications"
+                  ...(mod.theme === "melanoma"
+                    ? {
+                        background:
+                          "linear-gradient(135deg, #65cbe8 0%, #0073b8 42%, #004a93 72%, #003b7a 100%)",
+                        color: "#ffffff"
+                      }
+                    : mod.theme === "publications"
                     ? {
                         background:
                           "linear-gradient(135deg, #4eb6dc 0%, #0a4b86 48%, #062744 100%)"
@@ -182,8 +216,9 @@ function HomeScreen({ openModule, onContact }: { openModule: (id: string) => voi
                   openModule(mod.id);
                 }}
               >
-
-                <div className="eyebrow" style={{ marginBottom: 0 }}>{mod.eyebrow}</div>
+                <div className="eyebrow" style={{ marginBottom: 0 }}>
+                  {mod.eyebrow}
+                </div>
 
                 <div
                   className="module-title-row"
@@ -199,21 +234,29 @@ function HomeScreen({ openModule, onContact }: { openModule: (id: string) => voi
                   <div className="arrow">›</div>
                 </div>
 
-                <p style={{ marginTop: "10px", marginBottom: 0, lineHeight: 1.35 }}>{mod.subtitle}</p>
+                <p
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: 0,
+                    lineHeight: 1.35
+                  }}
+                >
+                  {mod.subtitle}
+                </p>
               </button>
             ))}
-
-
           </section>
 
           <div className="hint-box">
-            Tip: You can return to the home screen at any time using the navigation bar at the bottom.
+            Tip: You can return to the home screen at any time using the
+            navigation bar at the bottom.
           </div>
+
           <footer className="legal-footer">
-  <a href="/impressum.html">Legal Notice</a>
-  <span>·</span>
-  <a href="/datenschutz.html">Privacy Policy</a>
-</footer>
+            <a href="/impressum.html">Legal Notice</a>
+            <span>·</span>
+            <a href="/datenschutz.html">Privacy Policy</a>
+          </footer>
         </main>
       </div>
     </div>
@@ -293,26 +336,33 @@ function ScreenContent({ screen }: { screen: Screen }) {
 
       {screen.download && (
         <a
-        className="download-button"
-        href={screen.download.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() =>
-          trackEvent("pdf_download", {
-            label: screen.download!.label,
-            href: screen.download!.href
-          })
-        }
-      >
-        ↓ {screen.download.label}
-      </a>
-    )}
+          className="download-button"
+          href={screen.download.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() =>
+            trackEvent("pdf_download", {
+              label: screen.download!.label,
+              href: screen.download!.href
+            })
+          }
+        >
+          ↓ {screen.download.label}
+        </a>
+      )}
     </>
   );
 }
 
-
-function ContactScreen({ onBack, onMenu, onContact }: { onBack: () => void; onMenu: () => void; onContact: () => void }) {
+function ContactScreen({
+  onBack,
+  onMenu,
+  onContact
+}: {
+  onBack: () => void;
+  onMenu: () => void;
+  onContact: () => void;
+}) {
   return (
     <div className="page-shell">
       <div className="phone">
@@ -324,8 +374,8 @@ function ContactScreen({ onBack, onMenu, onContact }: { onBack: () => void; onMe
             <h1>Medical Information Regeneron</h1>
 
             <p>
-              Please contact us for medical-scientific questions, reports of adverse events,
-              and product complaints
+              Please contact us for medical-scientific questions, reports of
+              adverse events, and product complaints
             </p>
 
             <div
@@ -360,12 +410,15 @@ function ContactScreen({ onBack, onMenu, onContact }: { onBack: () => void; onMe
                   lineHeight: 1.4
                 }}
               >
-                <strong>Mail:</strong> medical.information<br />_global@regeneron.com
+                <strong>Mail:</strong> medical.information
+                <br />
+                _global@regeneron.com
               </div>
             </div>
 
             <p style={{ marginTop: "24px" }}>
-              January 2026<br />
+              January 2026
+              <br />
               DE-UNB-DECK-24-01-0001
             </p>
 
@@ -377,7 +430,9 @@ function ContactScreen({ onBack, onMenu, onContact }: { onBack: () => void; onMe
           <nav className="bottom-nav">
             <button onClick={onBack}>Back</button>
             <button onClick={onMenu}>Menu</button>
-            <button className="primary" onClick={onMenu}>Done</button>
+            <button className="primary" onClick={onMenu}>
+              Done
+            </button>
           </nav>
         </main>
       </div>
@@ -397,6 +452,7 @@ function ModuleScreen({
   const index = 0;
   const screen = module.screens[index];
   const progress = ((index + 1) / module.screens.length) * 100;
+
   return (
     <div className="page-shell">
       <div className="phone">
@@ -405,7 +461,12 @@ function ModuleScreen({
         <main
           className={`module-screen ${module.theme}`}
           style={
-            module.theme === "publications"
+            module.theme === "melanoma"
+              ? {
+                  background:
+                    "linear-gradient(135deg, #e8f7fb 0%, #42bfe6 24%, #005aa4 56%, #003b7a 100%)"
+                }
+              : module.theme === "publications"
               ? {
                   background:
                     "linear-gradient(135deg, #4eb6dc 0%, #0a4b86 48%, #062744 100%)"
