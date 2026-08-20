@@ -23,14 +23,14 @@ type Module = {
   eyebrow: string;
   title: string;
   subtitle: string;
-  theme: "veloci" | "rgc" | "melanoma" | "publications";
+  theme: "veloci" | "rgc" | "company" | "publications";
   screens: Screen[];
 };
 
 const pdfs = {
   velocisuite: "/downloads/velocisuite-flyer-2026.pdf",
   rgc: "/downloads/rgc-factsheet-2025.pdf",
-  melanoma: "/downloads/McKean_R3767_1613-Melanoma-BICR_ADO-2025.pdf",
+  company: "/downloads/Regeneron_Company-Update.pdf",
   publications: "/downloads/regeneron-publications-asco-2026.pdf"
 };
 
@@ -94,30 +94,6 @@ const modules: Module[] = [
     ]
   },
   {
-    id: "melanoma-bicr-ado-2025",
-    eyebrow: "ADO 2025 Poster",
-    title: "Melanoma BICR Analysis",
-    subtitle:
-      "Fianlimab + cemiplimab in patients with advanced melanoma: subgroup analyses by blinded independent central review",
-    theme: "melanoma",
-    screens: [
-      {
-        label: "Download",
-        title: "Original materials",
-        body:
-          "Download the source PDF or return to the main menu to explore additional Regeneron materials",
-        preview: {
-          src: "/downloads/melanoma-bicr-ado-2025-preview.png",
-          alt: "ADO 2025 melanoma poster preview"
-        },
-        download: {
-          label: "Download ADO Melanoma Poster",
-          href: pdfs.melanoma
-        }
-      }
-    ]
-  },
-  {
     id: "publications",
     eyebrow: "Regeneron Publications",
     title: "ASCO 2026",
@@ -136,6 +112,30 @@ const modules: Module[] = [
         download: {
           label: "Download Regeneron Publications",
           href: pdfs.publications
+        }
+      }
+    ]
+  },
+  {
+    id: "regeneron-company-update",
+    eyebrow: "REGENERON INSIGHTS",
+    title: "Company Brochure",
+    subtitle:
+      "Discover Regeneron: company insights, innovations and approved medicines",
+    theme: "company",
+    screens: [
+      {
+        label: "Download",
+        title: "Original materials",
+        body:
+          "Download the source PDF or return to the main menu to explore additional Regeneron materials",
+        preview: {
+          src: "/downloads/company-update-preview.png",
+          alt: "Company Update preview"
+        },
+        download: {
+          label: "Download Company Brochure",
+          href: pdfs.company
         }
       }
     ]
@@ -198,7 +198,7 @@ function HomeScreen({
                 style={{
                   minHeight: "128px",
                   padding: "22px 22px",
-                  ...(mod.theme === "melanoma"
+                  ...(mod.theme === "company"
                     ? {
                         background:
                           "linear-gradient(135deg, #65cbe8 0%, #0073b8 42%, #004a93 72%, #003b7a 100%)",
@@ -464,7 +464,7 @@ function ModuleScreen({
         <main
           className={`module-screen ${module.theme}`}
           style={
-            module.theme === "melanoma"
+            module.theme === "company"
               ? {
                   background:
                     "linear-gradient(135deg, #e8f7fb 0%, #42bfe6 24%, #005aa4 56%, #003b7a 100%)"
