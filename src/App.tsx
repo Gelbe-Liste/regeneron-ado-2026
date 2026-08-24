@@ -46,6 +46,30 @@ function trackEvent(eventName: string, data?: Record<string, string | number>) {
 
 const modules: Module[] = [
   {
+    id: "regeneron-company-update",
+    eyebrow: "REGENERON FACTS",
+    title: "Company Brochure",
+    subtitle:
+      "Discover Regeneron: company insights, innovations and approved medicines",
+    theme: "company",
+    screens: [
+      {
+        label: "Download",
+        title: "Original materials",
+        body:
+          "Download the source PDF or return to the main menu to explore additional Regeneron materials",
+        preview: {
+          src: "/downloads/company-update-preview.png",
+          alt: "Company Update preview"
+        },
+        download: {
+          label: "Download Company Brochure",
+          href: pdfs.company
+        }
+      }
+    ]
+  },
+  {
     id: "velocisuite",
     eyebrow: "Technology Leader",
     title: "VelociSuite® Technologies",
@@ -112,30 +136,6 @@ const modules: Module[] = [
         download: {
           label: "Download Regeneron Publications",
           href: pdfs.publications
-        }
-      }
-    ]
-  },
-  {
-    id: "regeneron-company-update",
-    eyebrow: "REGENERON INSIGHTS",
-    title: "Company Brochure",
-    subtitle:
-      "Discover Regeneron: company insights, innovations and approved medicines",
-    theme: "company",
-    screens: [
-      {
-        label: "Download",
-        title: "Original materials",
-        body:
-          "Download the source PDF or return to the main menu to explore additional Regeneron materials",
-        preview: {
-          src: "/downloads/company-update-preview.png",
-          alt: "Company Update preview"
-        },
-        download: {
-          label: "Download Company Brochure",
-          href: pdfs.company
         }
       }
     ]
